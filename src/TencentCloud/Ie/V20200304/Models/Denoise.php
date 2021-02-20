@@ -18,40 +18,36 @@ namespace TencentCloud\Ie\V20200304\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * 颜色增强参数
+ * 音频降噪
  *
- * @method string getType() 获取颜色增强类型，可选项：
-1.  tra；
-2.  weak；
-3.  normal;
-4.  strong;
-注意：tra不支持自适应调整，处理速度更快；weak,normal,strong支持基于画面颜色自适应，处理速度更慢。
- * @method void setType(string $Type) 设置颜色增强类型，可选项：
-1.  tra；
-2.  weak；
-3.  normal;
-4.  strong;
-注意：tra不支持自适应调整，处理速度更快；weak,normal,strong支持基于画面颜色自适应，处理速度更慢。
+ * @method string getType() 获取音频降噪强度，可选项：
+1. weak
+2.normal，
+3.strong
+默认为weak
+ * @method void setType(string $Type) 设置音频降噪强度，可选项：
+1. weak
+2.normal，
+3.strong
+默认为weak
  */
-class ColorEnhance extends AbstractModel
+class Denoise extends AbstractModel
 {
     /**
-     * @var string 颜色增强类型，可选项：
-1.  tra；
-2.  weak；
-3.  normal;
-4.  strong;
-注意：tra不支持自适应调整，处理速度更快；weak,normal,strong支持基于画面颜色自适应，处理速度更慢。
+     * @var string 音频降噪强度，可选项：
+1. weak
+2.normal，
+3.strong
+默认为weak
      */
     public $Type;
 
     /**
-     * @param string $Type 颜色增强类型，可选项：
-1.  tra；
-2.  weak；
-3.  normal;
-4.  strong;
-注意：tra不支持自适应调整，处理速度更快；weak,normal,strong支持基于画面颜色自适应，处理速度更慢。
+     * @param string $Type 音频降噪强度，可选项：
+1. weak
+2.normal，
+3.strong
+默认为weak
      */
     function __construct()
     {
