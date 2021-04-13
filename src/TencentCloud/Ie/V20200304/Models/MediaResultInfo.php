@@ -18,47 +18,47 @@ namespace TencentCloud\Ie\V20200304\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * 任务结果文件信息
+ * 结果文件媒体信息
  *
- * @method string getUrl() 获取文件链接。
+ * @method integer getDuration() 获取媒体时长，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setUrl(string $Url) 设置文件链接。
+ * @method void setDuration(integer $Duration) 设置媒体时长，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
- * @method integer getFileSize() 获取文件大小，部分任务支持，单位：字节
+ * @method array getResultVideoInfoSet() 获取视频流信息
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setFileSize(integer $FileSize) 设置文件大小，部分任务支持，单位：字节
+ * @method void setResultVideoInfoSet(array $ResultVideoInfoSet) 设置视频流信息
 注意：此字段可能返回 null，表示取不到有效值。
- * @method MediaResultInfo getMediaInfo() 获取媒体信息，对于媒体文件，部分任务支持返回
+ * @method array getResultAudioInfoSet() 获取音频流信息
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setMediaInfo(MediaResultInfo $MediaInfo) 设置媒体信息，对于媒体文件，部分任务支持返回
+ * @method void setResultAudioInfoSet(array $ResultAudioInfoSet) 设置音频流信息
 注意：此字段可能返回 null，表示取不到有效值。
  */
-class TaskResultFile extends AbstractModel
+class MediaResultInfo extends AbstractModel
 {
     /**
-     * @var string 文件链接。
+     * @var integer 媒体时长，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $Url;
+    public $Duration;
 
     /**
-     * @var integer 文件大小，部分任务支持，单位：字节
+     * @var array 视频流信息
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $FileSize;
+    public $ResultVideoInfoSet;
 
     /**
-     * @var MediaResultInfo 媒体信息，对于媒体文件，部分任务支持返回
+     * @var array 音频流信息
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $MediaInfo;
+    public $ResultAudioInfoSet;
 
     /**
-     * @param string $Url 文件链接。
+     * @param integer $Duration 媒体时长，单位：毫秒
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param integer $FileSize 文件大小，部分任务支持，单位：字节
+     * @param array $ResultVideoInfoSet 视频流信息
 注意：此字段可能返回 null，表示取不到有效值。
-     * @param MediaResultInfo $MediaInfo 媒体信息，对于媒体文件，部分任务支持返回
+     * @param array $ResultAudioInfoSet 音频流信息
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -74,17 +74,26 @@ class TaskResultFile extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Url",$param) and $param["Url"] !== null) {
-            $this->Url = $param["Url"];
+        if (array_key_exists("Duration",$param) and $param["Duration"] !== null) {
+            $this->Duration = $param["Duration"];
         }
 
-        if (array_key_exists("FileSize",$param) and $param["FileSize"] !== null) {
-            $this->FileSize = $param["FileSize"];
+        if (array_key_exists("ResultVideoInfoSet",$param) and $param["ResultVideoInfoSet"] !== null) {
+            $this->ResultVideoInfoSet = [];
+            foreach ($param["ResultVideoInfoSet"] as $key => $value){
+                $obj = new ResultVideoInfo();
+                $obj->deserialize($value);
+                array_push($this->ResultVideoInfoSet, $obj);
+            }
         }
 
-        if (array_key_exists("MediaInfo",$param) and $param["MediaInfo"] !== null) {
-            $this->MediaInfo = new MediaResultInfo();
-            $this->MediaInfo->deserialize($param["MediaInfo"]);
+        if (array_key_exists("ResultAudioInfoSet",$param) and $param["ResultAudioInfoSet"] !== null) {
+            $this->ResultAudioInfoSet = [];
+            foreach ($param["ResultAudioInfoSet"] as $key => $value){
+                $obj = new ResultAudioInfo();
+                $obj->deserialize($value);
+                array_push($this->ResultAudioInfoSet, $obj);
+            }
         }
     }
 }
