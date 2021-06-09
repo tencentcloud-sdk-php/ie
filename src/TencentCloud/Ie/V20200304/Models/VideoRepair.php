@@ -18,44 +18,24 @@ namespace TencentCloud\Ie\V20200304\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * 去编码毛刺、伪影参数
+ * 综合画质修复，包括：去噪，去毛刺，细节增强，主观画质提升。
  *
- * @method string getType() 获取去毛刺方式：weak,,strong
- * @method void setType(string $Type) 设置去毛刺方式：weak,,strong
- * @method string getAlgorithm() 获取去毛刺算法，可选项：
-edaf,
-wdaf，
-默认edaf。
-注意：此参数已经弃用
- * @method void setAlgorithm(string $Algorithm) 设置去毛刺算法，可选项：
-edaf,
-wdaf，
-默认edaf。
-注意：此参数已经弃用
+ * @method string getType() 获取画质修复类型，可选值：weak，normal，strong;
+默认值: weak
+ * @method void setType(string $Type) 设置画质修复类型，可选值：weak，normal，strong;
+默认值: weak
  */
-class ArtifactReduction extends AbstractModel
+class VideoRepair extends AbstractModel
 {
     /**
-     * @var string 去毛刺方式：weak,,strong
+     * @var string 画质修复类型，可选值：weak，normal，strong;
+默认值: weak
      */
     public $Type;
 
     /**
-     * @var string 去毛刺算法，可选项：
-edaf,
-wdaf，
-默认edaf。
-注意：此参数已经弃用
-     */
-    public $Algorithm;
-
-    /**
-     * @param string $Type 去毛刺方式：weak,,strong
-     * @param string $Algorithm 去毛刺算法，可选项：
-edaf,
-wdaf，
-默认edaf。
-注意：此参数已经弃用
+     * @param string $Type 画质修复类型，可选值：weak，normal，strong;
+默认值: weak
      */
     function __construct()
     {
@@ -72,10 +52,6 @@ wdaf，
         }
         if (array_key_exists("Type",$param) and $param["Type"] !== null) {
             $this->Type = $param["Type"];
-        }
-
-        if (array_key_exists("Algorithm",$param) and $param["Algorithm"] !== null) {
-            $this->Algorithm = $param["Algorithm"];
         }
     }
 }
